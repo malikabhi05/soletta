@@ -88,4 +88,5 @@ source "src/modules/flow/udev/Kconfig"
 source "src/modules/flow/unix-socket/Kconfig"
 source "src/modules/flow/update/Kconfig"
 source "src/modules/flow/wallclock/Kconfig"
+source "src/modules/flow/genericanalog/Kconfig"
 endmenu

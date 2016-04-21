@@ -1,0 +1,66 @@
+{
+  "$schema": "http://solettaproject.github.io/soletta/schemas/node-type-genspec.schema",
+  "name": "genericanalog",
+  "meta": {
+    "author": "Intel Corporation",
+    "license": "Apache-2.0",
+    "version": "1"
+  },
+  "types": [
+    {
+      "category": "input/hw",
+      "description": "Generic analog input reader, will read in any analog value and throw it out as raw",
+      "in_ports": [
+        {
+	  "data_type": "any",
+	  "description": "ticking depending on timer specs",
+	  "name": "TICK",
+	  "methods": {
+            "process": "genericanalog_tick"
+          }
+	}
+      ],
+      "methods": {
+        "close": "genericanalog_close",
+        "open": "genericanalog_open"
+      },
+      "name": "genericanalog",
+      "options": {
+        "members": [
+	  {
+            "data_type": "string",
+            "description": "Analog pin used",
+            "name": "pin"
+          },
+	  {
+            "data_type": "boolean",
+            "default": false,
+            "description": "Change 'pin' meaning to be the system parameters needed to address the desired pin. Use it if you know what you are doing.",
+            "name": "raw"
+          },
+          {
+            "data_type": "int",
+            "default": 12,
+            "description": "Number of ADC bits",
+            "name": "mask"
+          },
+          {
+            "data_type": "int",
+            "default": 100,
+            "description": "Polling time in milliseconds.",
+            "name": "poll_timeout"
+          }
+        ],
+	"version": 1
+      },
+      "out_ports": [
+	{
+	  "data_type": "int",
+          "description": "Measured value.",
+          "name": "OUT"
+	}
+      ],
+      "private_data_type": "_upm_generic_analog"
+    }
+  ]
+}
